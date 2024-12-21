@@ -98,8 +98,8 @@ bind_socket:
 	push rbp
 	mov rbp, rsp
 
-	pop rbp
 	mov rsp, rbp
+	pop rbp
 	ret
 
 exit:
