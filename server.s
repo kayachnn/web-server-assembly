@@ -3,8 +3,8 @@
 .global _start
 
 .section .data
-	.asciz "0.0.0.0"
-	.asciz "HTTP/1.0 200 OK\r\n\r\n"
+	local_address:  .asciz "0.0.0.0"
+	http_return:	.asciz "HTTP/1.0 200 OK\r\n\r\n"
 
 .section .text
 
@@ -41,7 +41,7 @@ _start:
 	mov WORD PTR [rbp-0x16], ax
 #call inet_addr("0.0.0.0")
 	xor rdi, rdi
-	lea rdi, [address]
+	lea rdi, [local_address]
 	xor rax, rax
 	call inet_addr
 	mov DWORD PTR [rbp-0x14], eax #4 byte sin_addr in memory
